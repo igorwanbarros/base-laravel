@@ -1,0 +1,22 @@
+{
+    "name": "igorwanbarros/base-laravel",
+    "description": "laravel, lumen, package",
+    "type": "library",
+    "require": {
+        "laravel/lumen-framework": "5.1.*",
+        "igorwanbarros/view-develop-php": "dev-master",
+        "laravelista/lumen-vendor-publish": "2.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Igorwanbarros\\BaseLaravel\\": "src/"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Igor Wanderley",
+            "email": "igorwanbarros@gmail.com"
+        }
+    ]
+}
