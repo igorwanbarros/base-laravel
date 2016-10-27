@@ -1,5 +1,5 @@
 {
-    "name": "igorwanbarros/base-laravel",
+    "name": "igorwanbarros/baseLaravel",
     "description": "laravel, lumen, package",
     "type": "library",
     "require": {
