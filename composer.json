@@ -4,7 +4,7 @@
     "type": "library",
     "require": {
         "laravel/lumen-framework": "5.1.*",
-        "igorwanbarros/view-develop-php": "dev-master",
+        "igorwanbarros/php2html-laravel": "dev-master",
         "laravelista/lumen-vendor-publish": "2.*"
     },
     "autoload": {
