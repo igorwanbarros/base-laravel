@@ -18,5 +18,6 @@
             "name": "Igor Wanderley",
             "email": "igorwanbarros@gmail.com"
         }
-    ]
+    ],
+    "minimum-stability": "stable"
 }
