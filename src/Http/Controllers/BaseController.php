@@ -1,6 +1,6 @@
 <?php
 
-namespace Igorwanbarros\BaseLaravel;
+namespace Igorwanbarros\BaseLaravel\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Laravel\Lumen\Routing\Controller;

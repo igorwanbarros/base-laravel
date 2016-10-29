@@ -1,6 +1,6 @@
 <?php
 
-namespace Igorwanbarros\BaseLaravel;
+namespace Igorwanbarros\BaseLaravel\Http\Controllers\Support;
 
 use App\Http\Controllers\Controller;
 
