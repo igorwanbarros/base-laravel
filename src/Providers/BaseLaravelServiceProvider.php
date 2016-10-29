@@ -7,12 +7,17 @@ use Illuminate\Support\ServiceProvider;
 class BaseLaravelServiceProvider extends ServiceProvider
 {
 
+    protected $commands = [
+        '\Laravelista\LumenVendorPublish\VendorPublishCommand'
+    ];
+
+
     /**
      * @return void
      */
     public function register()
     {
-
+        $this->commands($this->commands);
     }
 
 
