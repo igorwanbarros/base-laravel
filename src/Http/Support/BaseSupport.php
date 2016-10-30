@@ -1,8 +1,8 @@
 <?php
 
-namespace Igorwanbarros\BaseLaravel\Http\Controllers\Support;
+namespace Igorwanbarros\BaseLaravel\Http\Support;
 
-use App\Http\Controllers\Controller;
+use Laravel\Lumen\Routing\Controller;
 
 abstract class BaseSupport
 {
