@@ -3,13 +3,24 @@
 namespace Igorwanbarros\BaseLaravel\Http\Support;
 
 use Laravel\Lumen\Routing\Controller;
+use Igorwanbarros\BaseLaravel\Http\Controllers\BaseController;
 
 abstract class BaseSupport
 {
+
+    /**
+     * @var BaseController|Controller
+     */
     protected $controller;
 
+    /**
+     * @var callable
+     */
     protected $callback;
 
+    /**
+     * @var null|array
+     */
     protected $parameters;
 
 

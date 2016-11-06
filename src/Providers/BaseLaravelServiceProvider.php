@@ -28,9 +28,10 @@ class BaseLaravelServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__ . '/../Migrations' => base_path('database/migrations/'),
+            __DIR__ . '/../assets' => base_path('public/assets/base-laravel/'),
         ]);
 
-        $this->loadViewsFrom(__DIR__.'/views', 'softcomtecnologia');
+        $this->loadViewsFrom(__DIR__ . '/../Resources/view', 'base-laravel');
 
         require_once(__DIR__ . '/../Http/routes.php');
     }

@@ -3,11 +3,28 @@
 namespace Igorwanbarros\BaseLaravel\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
 
 class BaseModel extends Model
 {
     protected static $informationSchema;
+
+    use SoftDeletes;
+
+
+    public function __construct(array $attributes = [])
+    {
+        $schema = $this->_initInformationSchema($this->getTable());
+
+        foreach ($schema as $column) {
+            if (isset($column->COLUMN_NAME) && $column->COLUMN_NAME != $this->getDeletedAtColumn()) {
+                $this->fillable[] = $column->COLUMN_NAME;
+            }
+        }
+
+        parent::__construct($attributes);
+    }
 
 
     public static function getSchema()
@@ -24,12 +41,15 @@ class BaseModel extends Model
     }
 
 
-    protected static function _initInformationSchema()
+    protected static function _initInformationSchema($table = null)
     {
-        $static = new static;
+        if (!$table) {
+            $static = new static;
+            $table = $static->getTable();
+        }
 
         $schema = DB::table('information_schema.columns')
-            ->where('table_name', '=', $static->getTable())
+            ->where('table_name', '=', $table)
             ->where('table_schema', '=', env('DB_DATABASE'))
             ->get();
 

@@ -2,26 +2,58 @@
 
 namespace Igorwanbarros\BaseLaravel\Http\Controllers;
 
+use Igorwanbarros\Php2HtmlLaravel\Form\FormViewLaravel;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Laravel\Lumen\Routing\Controller;
 
 abstract class BaseController extends Controller
 {
+
+    /**
+     * @var array
+     */
     public $headers;
 
+    /**
+     * @var FormViewLaravel
+     */
     public $form;
 
+    /**
+     * @var Model
+     */
     public $model;
 
+    /**
+     * @var \stdClass
+     */
     public $view;
 
+    /**
+     * @var Request
+     */
     public $request;
 
+    /**
+     * @var string
+     */
     public $title;
 
+    /**
+     * @var string
+     */
     public $controllerName;
 
+    /**
+     * @var
+     */
     public $userColumn;
+
+    /**
+     * @var string
+     */
+    public $resourceView;
 
 
     public function __construct(Request $request, $model = null)
@@ -44,7 +76,6 @@ abstract class BaseController extends Controller
         }
 
         $this->view->currentRoute   = $method.$pathInfo;
-        $this->view->btnAddAjax     = false;
     }
 
 
