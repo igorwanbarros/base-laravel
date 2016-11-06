@@ -18,6 +18,8 @@ class BaseLaravelServiceProvider extends ServiceProvider
     public function register()
     {
         $this->commands($this->commands);
+        $this->app->register(ToastrServiceProvider::class);
+        $this->app->configure('toastr');
     }
 
 
@@ -34,5 +36,11 @@ class BaseLaravelServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/../Resources/view', 'base-laravel');
 
         require_once(__DIR__ . '/../Http/routes.php');
+
+        require_once(__DIR__ . '/../helpers/helper.php');
+
+        if (file_exists(base_path('config/messages.php'))) {
+            $this->app->configure('messages');
+        }
     }
 }

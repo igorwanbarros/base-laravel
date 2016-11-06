@@ -59,10 +59,18 @@ class BaseModel extends Model
     }
 
 
+    /**
+     * @param array $data
+     *
+     * @return $this
+     */
     public function saveOrUpdate(array $data = [])
     {
         if (isset($data['id']) && $data['id'] > 0) {
-            return $this->find($data['id'])->fill($data)->update();
+            $model = $this->find($data['id'])->fill($data);
+            $model->update();
+
+            return $model;
         }
 
         return $this->create($data);
