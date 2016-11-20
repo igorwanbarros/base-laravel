@@ -3,6 +3,8 @@
 namespace Igorwanbarros\BaseLaravel\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Igorwanbarros\Php2Html\Menu\ItemMenu;
+use Igorwanbarros\Php2HtmlLaravel\Menu\MenuViewLaravel;
 
 class BaseLaravelServiceProvider extends ServiceProvider
 {
@@ -20,6 +22,19 @@ class BaseLaravelServiceProvider extends ServiceProvider
         $this->commands($this->commands);
         $this->app->register(ToastrServiceProvider::class);
         $this->app->configure('toastr');
+
+        $this->app['menu'] = $this->app->share(function ($app) {
+            return new MenuViewLaravel();
+        });
+
+        app('menu')->addItemMenu(
+            'inicio',
+            new ItemMenu(
+                'Inicio',
+                url(),
+                'fa fa-home'
+            )
+        );
     }
 
 

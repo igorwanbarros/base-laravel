@@ -15,7 +15,7 @@ class ToastrServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__ . '/../config/toastr.php' => base_path('config/toastr.php'),
-            ], 'config');
+        ], 'config');
     }
 
     /**
@@ -25,8 +25,7 @@ class ToastrServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app['toastr'] = $this->app->share(function ($app)
-        {
+        $this->app['toastr'] = $this->app->share(function ($app) {
             return new Toastr($app->session, $app->config);
         });
     }
