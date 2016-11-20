@@ -2,7 +2,7 @@
 
 namespace Igorwanbarros\BaseLaravel\Http\Support;
 
-use Igorwanbarros\Php2Html\Panel\PanelView;
+use Igorwanbarros\Php2HtmlLaravel\Panel\PanelViewLaravel;
 
 class FormHelper extends BaseSupport
 {
@@ -28,8 +28,10 @@ class FormHelper extends BaseSupport
             $form = $this->controller->form->fill($old);
         }
 
-        $view->widget = new PanelView($title);
-        $view->widget->setBody($form);
+        if (!isset($view->widget)) {
+            $view->widget = new PanelViewLaravel($title);
+            $view->widget->setBody($form);
+        }
 
         if ($view->isAjax) {
             $view->widget = $form;

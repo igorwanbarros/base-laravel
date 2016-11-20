@@ -2,7 +2,7 @@
 
 namespace Igorwanbarros\BaseLaravel\Http\Support;
 
-use Igorwanbarros\Php2Html\Panel\PanelView;
+use Igorwanbarros\Php2HtmlLaravel\Panel\PanelViewLaravel;
 use Igorwanbarros\Php2HtmlLaravel\Table\TableViewLaravel;
 
 class IndexHelper extends BaseSupport
@@ -11,12 +11,19 @@ class IndexHelper extends BaseSupport
     {
         $this->controller->resourceView = 'base-laravel::index-default';
 
+        if ($this->controller->view->isAjax) {
+            $this->controller->resourceView = 'base-laravel::index-default-ajax';
+        }
+
         $model  = $this->controller->model;
 
         $this->controller->view->model = $model;
-        $this->controller->view->widget = new PanelView(sprintf($this->controller->title, ''));
-        $this->controller->form = $this->controller->form->search()
-            ->fill($this->controller->request->all());
+        $this->controller->view->widget = new PanelViewLaravel(sprintf($this->controller->title, ''));
+
+        if (is_object($this->controller->form)) {
+            $this->controller->form = $this->controller->form->search()
+                ->fill($this->controller->request->all());
+        }
 
         $this->_setFilter();
         $this->_setTable();
@@ -61,8 +68,13 @@ class IndexHelper extends BaseSupport
             return;
         }
 
+        if (!$this->controller->view->model) {
+            $this->controller->view->table = '';
+            return;
+        }
+
         $this->controller->view->table = TableViewLaravel::source(
-            $this->controller->headers,
+            $this->controller->headers ?: ['id' => 'Código'],
             $this->controller->view->model
         );
 
