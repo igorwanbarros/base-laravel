@@ -4,7 +4,7 @@
     "type": "library",
     "require": {
         "laravel/lumen-framework": "5.1.*",
-        "igorwanbarros/php2html-laravel": "dev-master",
+        "igorwanbarros/php2html-laravel": "*",
         "laravelista/lumen-vendor-publish": "2.*"
     },
     "autoload": {
@@ -19,6 +19,5 @@
             "email": "igorwanbarros@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    "minimum-stability": "dev"
 }
