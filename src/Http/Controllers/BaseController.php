@@ -115,4 +115,14 @@ abstract class BaseController extends Controller
 
         return $this->controllerName;
     }
+
+
+    protected function _returnAutocompleteResults($results)
+    {
+        return response()->json([
+            'results' => [
+                'data' => $results
+            ]
+        ]);
+    }
 }

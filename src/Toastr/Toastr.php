@@ -34,7 +34,9 @@ class Toastr
     {
         $messages = $this->session->get('toastr::messages');
 
-        if (! $messages) $messages = [];
+        if (! $messages) {
+            $messages = [];
+        }
 
         $script = '<script type="text/javascript">';
 

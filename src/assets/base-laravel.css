@@ -1,3 +1,13 @@
 .base-laravel__actions {
     padding-bottom: 1.5em;
 }
+
+/* FORM LARAVEL */
+.label__required {
+    color: silver;
+    font-weight: normal;
+    padding-left: 0.5em;
+}
+.has-error .label__required {
+    color: darkred;
+}

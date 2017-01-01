@@ -75,4 +75,13 @@ class BaseModel extends Model
 
         return $this->create($data);
     }
+
+
+    /**
+     * @return string
+     */
+    public function getPrimaryKey()
+    {
+        return $this->primaryKey;
+    }
 }
