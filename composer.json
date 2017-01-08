@@ -18,5 +18,10 @@
             "name": "Igor Wanderley",
             "email": "igorwanbarros@gmail.com"
         }
-    ]
+    ],
+    "extra": {
+        "branch-alias": {
+            "dev-master": "beta-v.0.1"
+        }
+    }
 }
