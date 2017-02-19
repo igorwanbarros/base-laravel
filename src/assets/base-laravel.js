@@ -309,7 +309,43 @@ function BaseEvents()
 
         $('body').on('click', '.typeahead__button', onClick);
     })();
+
+    this.checkAll = function () {
+        var $this,
+            $list,
+            onClick = function () {
+                $this = $(this);
+                $list = $this.parents('table');
+
+                if(!this.changed) {
+                    this.changed = true;
+                    $list.iCheck('check');
+                    return true;
+                }
+
+                this.changed = false;
+                $list.iCheck('uncheck');
+            };
+
+        $('body').on('ifChanged', '.check-all', onClick);
+    }();
 }
+
+BaseEvents.iCheckPlugin = function (color) {
+    color = color == undefined ? 'grey' : color;
+
+    var iCheck = function () {
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-' + color,
+            radioClass: 'iradio_square-' + color,
+            increaseArea: '20%'
+        });
+    };
+
+    $(document)
+        .ready(iCheck)
+        .ajaxSuccess(iCheck);
+};
 
 $(document).ready(function () {
     new BaseEvents();
