@@ -18,7 +18,7 @@ class IndexHelper extends BaseSupport
         $this->controller->resourceView = 'base-laravel::index-default';
 
         if ($this->controller->view->isAjax) {
-            $this->controller->resourceView = 'base-laravel::index-default-ajax';
+            $this->controller->resourceView .= '-ajax';
         }
 
         $this->_widgets();

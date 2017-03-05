@@ -91,7 +91,7 @@ abstract class BaseController extends Controller
             $params = array_merge($params, $array);
         }
 
-        return view($view)->with($params);
+        return view($view, $params);
     }
 
 

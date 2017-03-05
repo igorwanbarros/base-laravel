@@ -14,6 +14,10 @@ class FormHelper extends BaseSupport
     {
         $this->controller->resourceView = 'base-laravel::form-default';
 
+        if ($this->controller->view->isAjax) {
+            $this->controller->resourceView .= '-ajax';
+        }
+
         $view   = $this->controller->view;
         $model  = $this->controller->model;
         $id     = null;
