@@ -97,9 +97,11 @@ function BaseModal (title, content, footer)
         _title = title,
         _content = content,
         _footer = footer,
+        _size = 'modal-md',
         _setModal = function () {
             var $modal = $(_id);
             $modal.find('#modal-title').html(_title);
+            $modal.find('.modal-dialog').addClass(_size);
             $modal.find('.modal-body').html(_content);
             $modal.find('.modal-footer').html(_footer);
         };
@@ -148,6 +150,15 @@ function BaseModal (title, content, footer)
         }
 
         _footer = footer;
+        return this;
+    };
+
+    this.classSize = function (size) {
+        if (undefined == size) {
+            return _size;
+        }
+        _size = size;
+
         return this;
     };
 }
@@ -236,6 +247,7 @@ function BaseEvents()
         var modal = application.modal(),
             $this,
             title,
+            modalSize,
             ajaxCallbacks = {
                 success: function (response) {
                     modal.content(response)
@@ -254,6 +266,10 @@ function BaseEvents()
 
                 if ((title = $this.attr('title')) || (title = $this.attr('data-title'))) {
                     modal.title(title);
+                }
+
+                if ((modalSize = $this.attr('data-modal-size'))) {
+                    modal.classSize(modalSize);
                 }
 
                 application.requestAjax($this.attr('href'))
