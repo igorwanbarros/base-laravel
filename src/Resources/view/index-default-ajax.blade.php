@@ -1,7 +1,7 @@
 @extends('app-ajax')
 @section('content')
 
-    @yield('after-widget')
+    @yield('before-widget')
 
     {!! $widget !!}
 
