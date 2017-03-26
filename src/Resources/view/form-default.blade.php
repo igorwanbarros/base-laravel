@@ -1,6 +1,9 @@
 @extends('app')
 @section('content')
 
+    @yield('after-actions-top')
+
+    @section('actions-top')
     <div class="row">
         <div class="col-sm-12 text-right base-laravel__actions">
             <a href="{!! url($urlBase . '/novo') !!}"
@@ -21,9 +24,17 @@
             @endif
         </div>
     </div>
+    @show
+
+    @yield('after-widget')
 
     {!! $widget !!}
 
+    @yield('after-widget')
+
+    @yield('after-actions-bottom')
+
+    @section('actions-bottom')
     <div class="row">
         <div class="col-sm-12 text-right">
             <a href="{!! url($urlBase) !!}" class="btn btn-default">
@@ -32,4 +43,5 @@
             </a>
         </div>
     </div>
+    @show
 @stop
