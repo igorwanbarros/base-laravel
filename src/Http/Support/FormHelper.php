@@ -12,7 +12,7 @@ class FormHelper extends BaseSupport
 
     public function logic()
     {
-        $this->controller->resourceView = 'base-laravel::form-default';
+        $this->controller->resourceView = $this->controller->resourceView ?: 'base-laravel::form-default';
 
         if ($this->controller->view->isAjax) {
             $this->controller->resourceView .= '-ajax';
