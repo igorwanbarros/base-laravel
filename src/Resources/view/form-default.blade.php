@@ -26,7 +26,7 @@
     </div>
     @show
 
-    @yield('after-widget')
+    @yield('before-widget')
 
     {!! $widget !!}
 
