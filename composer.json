@@ -3,7 +3,7 @@
     "description": "laravel, lumen, package",
     "type": "library",
     "require": {
-        "laravel/framework": "5.1.*",
+        "laravel/framework": "5.3.*",
         "igorwanbarros/php2html-laravel": "*",
         "laravelista/lumen-vendor-publish": "2.*"
     },
